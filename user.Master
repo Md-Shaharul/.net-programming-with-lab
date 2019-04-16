@@ -1,0 +1,229 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="user.master.cs" Inherits="FinalFurnitureShowroom.User.user" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Furniture showroom</title>
+    <link href="Style/Main.css" rel="stylesheet" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<!--[if lte IE 6]><link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" /><![endif]-->
+<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+<script src="js/jquery-func.js" type="text/javascript"></script>
+</head>
+   
+<body>
+     <form id="fi" runat="server"> 
+<!-- Shell -->
+<div class="shell">
+  <!-- Header -->
+  <div id="header">
+    <h1 id="logo"><a href="#">Glamour Furniture</a></h1>
+    <!-- Cart -->
+    <div id="cart"> <a href="ViewCart.aspx" class="cart-link">Your Shopping Cart</a>
+      <div class="cl">&nbsp;</div>
+      <span>Total Items:<asp:Label id="cartTotItem" runat="server" Text="0"></asp:Label></span> &nbsp;&nbsp; <span>Cost: <asp:Label id="cartTorPrice" runat="server" Text="0"></asp:Label> $</span> </div>
+    <!-- End Cart -->
+    <!-- Navigation -->
+    <div id="navigation">
+      <ul>
+        <li><a href="Home.aspx" <%--class="active"--%>>Home</a></li>
+        <li><a href="DisplayItem1.aspx">The Store</a></li>
+        <li><a href="Registration.aspx">Registration</a></li>
+
+          <%
+              if(Session["user"]==null)
+              {
+                  %>
+          <li><a href="LogIn.aspx">log In</a></li>
+          <%
+              }
+              else
+              {
+                  %>
+          <li><a href="LogOut.aspx">log Out</a></li>
+          <%
+              }
+
+              %>
+        
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <!-- End Navigation -->
+  </div>
+  <!-- End Header -->
+  <!-- Main -->
+  <div id="main">
+    <div class="cl">&nbsp;</div>
+    <!-- Content -->
+    <div id="content">
+      <!-- Content Slider -->
+      <div id="slider" class="box">
+        <div id="slider-holder">
+          <ul>
+            <li><a href="#"><img src="css/images/mirror.jpg" alt=""height="100%" width="100%" /></a></li>
+            <li><a href="#"><img src="css/images/special khat.png" alt=""height="100%" width="100%" /></a></li>
+            <li><a href="#"><img src="css/images/wow.jpg" alt="" height="100%" width="100%" /></a></li>
+            <li><a href="#"><img src="css/images/khat.jpg" alt="" height="100%" width="100%" /></a></li>
+          </ul>
+        </div>
+        <div id="slider-nav"> <a href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> </div>
+      </div>
+      <!-- End Content Slider -->
+      <!-- Products -->
+      <div class="products">
+          <asp:ContentPlaceHolder ID="c1" runat="server"> </asp:ContentPlaceHolder>
+        <div class="cl">&nbsp;</div>
+      
+        <div class="cl">&nbsp;</div>
+      </div>
+      <!-- End Products -->
+    </div>
+    <!-- End Content -->
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <!-- Search -->
+      <div class="box search">
+        <h2>Search by <span></span></h2>
+        <div class="box-content">
+            <br>
+            <label>Product Name</label>
+            <input type="text" class="field" id="searchTextBox" />
+
+            <input type="button" class="search-submit" value="Search" onclick="search();"/>
+            <p> please enter item name inside the textbox</p>
+          
+        </div>
+      </div>
+      <!-- End Search -->
+      <!-- Categories -->
+     <div class="Menu"> 
+                    <ul>
+                        <li class="dropdown2"> <a href="#">Catagory</a>
+                           
+                            <ul > <li class="dropdown"> 
+                          <a href="Furniture"> Home</a >
+                                    <ul> 
+                                    <li class="dropdownDining"><a href="Sports">Dining</a></li>
+                                    <li class="dropdownLiving"><a href="Sports">Living</a></li>
+                                    <li class="dropdownBed"><a href="Sports">Bedroom</a>
+                                    <ul>
+                                       <li class="dropdownBedr"><a href="DisplayItem1.aspx">Bed</a>
+                                       </li>
+                                     
+                                    <li class="dropdownDressing"><a href="Sports">Table</a></li>
+                                    <li class="dropdownWarddrobe"><a href="Sports">Wadrobe</a></li>
+                                    <li class="dropdownAlmira"><a href="Sports">Almira</a></li>
+                                  <li class="dropdownChair"><a href="Sports">Chair</a></li>
+
+                                    </ul>
+                                    </li>
+                                    <li class="dropdownDecor"> <a href="Sports">Decor</a></li>
+                                    <li class="dropdownSofas"> <a href="Sports">Cabinet</a></li>
+
+
+
+
+
+                                </ul>
+                                  </li>
+
+                                <li  class="dropdownOffice"> 
+                              <a href="Mobile">Office</a> </li>
+                                 <li class="dropdownResturant">
+                           <a href="Mobile">Resturant</a> </li>
+                                 <li  class="dropdownMtress">
+                              <a href="Sports">Matress</a> </li>
+                                <li  class="dropdownDoor">
+                              <a href="Sports">Doors</a> </li>
+                                <li  class="dropdownGuest">
+                              <a href="Sports">Guest</a>
+                              </li>
+                           </ul>
+                       </li>
+                                         <li class="right"> <a href="#">Support</a></li>
+
+                   </ul>
+                </div>
+                
+      <!-- End Categories -->
+    </div>
+    <!-- End Sidebar -->
+    <div class="cl">&nbsp;</div>
+  </div>
+  <!-- End Main -->
+  <!-- Side Full -->
+  <div class="side-full">
+    <!-- More Products -->
+    <div class="more-products">
+      <div class="more-products-holder">
+        <ul>
+          <li><a href="#"><img src="css/images/pic1.jpg" alt="" height="110" width="110" /></a></li>
+          <li><a href="#"><img src="css/images/pic2.jpg" alt="" height="110" width="110"/></a></li>
+          <li><a href="#"><img src="css/images/pic3.jpg" alt="" height="110" width="110"/></a></li>
+          <li><a href="#"><img src="css/images/pic4.jpg" alt="" height="110" width="110"/></a></li>
+          <li><a href="#"><img src="css/images/pic5.jpg" alt="" height="110" width="110"/></a></li>
+          <li><a href="#"><img src="css/images/pic6.jpg" alt=""height="110" width="110" /></a></li>
+          <li><a href="#"><img src="css/images/pic7.jpg" alt="" height="110" width="110"/></a></li>
+          <li><a href="#"><img src="css/images/pic8.jpg" alt="" height="110" width="110"/></a></li>
+          <li><a href="#"><img src="css/images/pic9.jpg" alt="" height="110" width="110" /></a></li>
+          <li><a href="#"><img src="css/images/pic10.jpg" alt=""height="110" width="110" /></a></li>
+          <li><a href="#"><img src="css/images/pic11.jpg" alt=""height="110" width="110" /></a></li>
+          <li><a href="#"><img src="css/images/pic12.jpg" alt="" height="110" width="110"/></a></li>
+          <li><a href="#"><img src="css/images/pic13.jpg" alt="" height="110" width="110"/></a></li>
+          <li><a href="#"><img src="css/images/pic14.jpg" alt="" height="110" width="110"/></a></li>
+          <li><a href="#"><img src="css/images/pic15.jpg" alt="" height="110" width="110"/></a></li>
+          
+          <li class="last"><a href="#"><img src="css/images/small7.jpg" alt="" /></a></li>
+        </ul>
+      </div>
+      <div class="more-nav"> <a href="#" class="prev">previous</a> <a href="#" class="next">next</a> </div>
+    </div>
+    <!-- End More Products -->
+    <!-- Text Cols -->
+    <div class="cols">
+      <div class="cl">&nbsp;</div>
+      <div class="col">
+        <h3 class="ico ico1">Air Supply</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
+        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
+      </div>
+      <div class="col">
+        <h3 class="ico ico2">Call Anytime</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
+        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
+      </div>
+      <div class="col">
+        <h3 class="ico ico3">Hidden Gift</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
+        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
+      </div>
+      <div class="col col-last">
+        <h3 class="ico ico4">Free Product</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, metus ac cursus auctor, arcu felis ornare dui.</p>
+        <p class="more"><a href="#" class="bul">Lorem ipsum</a></p>
+      </div>
+      <div class="cl">&nbsp;</div>
+    </div>
+    <!-- End Text Cols -->
+  </div>
+  <!-- End Side Full -->
+  <!-- Footer -->
+  <div id="footer">
+    <p class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </p>
+    <p class="right"> &copy; 2010 Shop Around. Design by <a href="http://chocotemplates.com">Chocotemplates.com</a> </p>
+  </div>
+  <!-- End Footer -->
+</div>
+<!-- End Shell -->
+         </form>
+    <script type="text/javascript">
+        function search() {
+            
+            window.location = "AfterSearch.aspx?search=" + document.getElementById("searchTextBox").value;
+        }
+    </script>
+</body>
+</html>
